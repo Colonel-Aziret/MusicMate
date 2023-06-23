@@ -1,0 +1,303 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<div class="flex-container">
+    <div class="main">
+        <div class="content">
+            <div class="music-head">
+                <img src="https://i.imgur.com/xDSTaej.jpg" />
+                <section class="catty-music">
+                    <div>
+                        <p>CattyBoard Top 100 Single Charts (11.06.36)</p>
+                        <p>Unknown Artist</p>
+                        <p>2016 . Charts . 100 songs</p>
+                    </div>
+                    <div>
+                        <i class="fa fa-play"> &nbsp;Play all</i>
+                        <i class="fa fa-plus"> &nbsp;Add to</i>
+                        <i class="fa fa-ellipsis-h"> &nbsp;More</i>
+                    </div>
+                </section>
+            </div>
+
+            <ul class="music-list">
+
+
+                <li th:each="song : ${songs}">
+                    <img th:src="${song.image}" height="25" width="30%">
+                    <p th:text="${song.title}"></p>
+                    <p th:text="${song.artist}"></p>
+                    <audio controls>
+                        <source th:src="@{'data:audio/mpeg;base64,' + ${song.audio}}" type="audio/mpeg">
+                    </audio>
+                </li>
+            </ul>
+
+        </div>
+        <aside>
+            <i class="fa fa-bars"></i>
+            <i class="fa fa-home"></i>
+            <i class="fa fa-search"></i>
+            <i class="fa fa-volume-up"></i>
+            <i class="fa fa-user"></i>
+            <i class="fa fa-spotify"></i>
+            <i class="fa fa-cog"></i>
+            <i class="fa fa-soundcloud"></i>
+        </aside>
+    </div>
+
+</div>
+<style>
+    .music-list li img {
+        width: 50px; /* Adjust the width as needed */
+        height: 50px; /* Adjust the height as needed */
+        border-radius: 50%; /* Make the image circular */
+    }
+
+
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 auto;
+        height: 100%;
+    }
+
+    .main {
+        display: flex;
+    }
+
+    .content {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    aside {
+        display: flex;
+        flex-direction: column;
+        background: #cecece;
+        order: -1;
+        justify-content: space-around;
+        align-items: center;
+        flex: 0 0 40px;
+        height: 950px;
+    }
+
+    .music-head {
+        color: white;
+        background: #4e4e4e;
+        flex: 0 0 280px;
+        padding: 40px;
+        display: flex;
+    }
+
+    @media (max-width: 1199px) {
+        .music-head {
+            flex-direction: column;
+            align-items: center;
+            flex: 0 0 240px;
+        }
+        .music-head img {
+            width: 150px;
+        }
+        .catty-music > div > p:not(:first-of-type) {
+            display: none;
+        }
+        .catty-music {
+            padding-left: 0!important;
+            margin-top: 20px;
+        }
+        .catty-music div:nth-of-type(2) .fa {
+            flex: 0 0 33%;
+            text-align: center;
+        }
+        .catty-music div {
+            display: flex;
+        }
+        .catty-music div:nth-of-type(2) i.fa:nth-of-type(2) {
+            padding: 0!important;
+        }
+        .music-list li p:nth-of-type(2), .music-list li p:nth-of-type(4) {
+            display: none!important;
+        }
+        .music-list li {
+            display: flex;
+            padding: 10px 20px; /* Adjust the padding as needed */
+            min-height: 50px;
+            align-items: center; /* Add this line to vertically center the content */
+        }
+
+        .music-list li p {
+            flex: 0 1 auto;
+        }
+    }
+
+    .music-list {
+        flex: 1 0 auto;
+        list-style-type: none;
+        padding: 5px 10px 0px;
+        color: black;
+        margin-left: -20px; /* Adjust the margin as needed */
+    }
+
+
+    li {
+        display: flex;
+        padding: 0 20px;
+        min-height: 50px;
+    }
+
+    li p {
+        flex: 0 0 25%;
+    }
+
+    li span.catty-cloud {
+        border: 1px solid black;
+        font-size: 0.6em;
+        padding: 3px;
+    }
+
+    li:nth-of-type(2n) {
+        background-color: #f2f2f2;
+    }
+
+    .catty-music {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        padding-left: 50px;
+    }
+
+    .catty-music div:nth-of-type(1) {
+        margin-bottom: auto;
+    }
+
+    .catty-music div:nth-of-type(2) i.fa:nth-of-type(2) {
+        padding: 0 0.7em;
+    }
+
+    .catty-music div:nth-of-type(1) p:first-of-type {
+        margin: 0 0 10px;
+        font-size: 1.8em;
+    }
+
+    .catty-music div:nth-of-type(1) p:not(:first-of-type){
+        font-size: 0.9em;
+        margin: 2px 0;
+    }
+
+    footer {
+        display: flex;
+        background: rgba(61, 100, 158, .9);
+    }
+
+    .footer-left {
+        flex-grow: 3;
+        display: flex;
+        color: white;
+    }
+
+    .footer-left img {
+        flex: 0 1 100px;
+        display: flex;
+        padding: 10px;
+    }
+
+    .footer-right {
+        flex-grow: 2;
+        color: white;
+    }
+
+    .footer-right {
+        display: flex;
+        justify-content: space-between;
+        align-self: center;
+    }
+
+    .footer-right i:last-of-type {
+        margin-right: 10px;
+    }
+
+    @media (max-width:1199px) {
+        .footer-right i:nth-of-type(4), .footer-right i:last-of-type {
+            display: none;
+        }
+        .footer-right i:nth-of-type(3) {
+            margin-right: 10px;
+        }
+        .footer-right {
+            justify-content: space-around;
+        }
+        .footer-left img {
+            display: none;
+        }
+        footer {
+            display: flex;
+            flex: 120px;
+        }
+    }
+
+    .footer-text {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        margin-left: 10px;
+    }
+
+    .footer-text p {
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+</style>
+<script>
+    function decodeBase64ToUrl(base64String) {
+        const decodedString = atob(base64String);
+        const url = URL.createObjectURL(new Blob([decodedString]));
+        return url;
+    }
+
+
+    const songs = [
+        {
+            title: "Song Title 1",
+            artist: "Artist 1",
+            audio: "base64-audio-1"
+        },
+        {
+            title: "Song Title 2",
+            artist: "Artist 2",
+            audio: "base64-audio-2"
+        },
+
+    ];
+
+
+    function playSong(event) {
+        const audioElement = event.currentTarget.querySelector('audio');
+        audioElement.play();
+    }
+
+
+    const songListItems = document.querySelectorAll('.music-list li');
+    songListItems.forEach(function (item) {
+        item.addEventListener('click', playSong);
+    });
+
+
+
+    const musicList = document.querySelector('.music-list');
+    songs.forEach(function (song) {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+            <p>${song.title}</p>
+            <p>${song.artist}</p>
+            <p><span class="catty-cloud">CATTY CLOUD SYNC</span></p>
+            <audio controls></audio>
+        `;
+        const audioElement = listItem.querySelector('audio');
+        const audioUrl = decodeBase64ToUrl(song.audio);
+        console.log(audioUrl)
+        audioElement.src = audioUrl;
+        musicList.appendChild(listItem);
+    });
+</script>
+
