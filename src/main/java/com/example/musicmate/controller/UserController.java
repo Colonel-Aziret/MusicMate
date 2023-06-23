@@ -28,27 +28,21 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String showRegistrationForm() {
+    public String showRegistrationForm(Model model) {
+        model.addAttribute("user", new User());
         return "registration";
     }
 
     @PostMapping("/register")
-    public String registerUser(
-            @RequestParam String email,
-            @RequestParam String password,
-            @RequestParam String name,
-            @RequestParam String gender,
-            @RequestParam int age,
-            Model model
-    ) {
+    public String registerUser(@ModelAttribute("user") User user, Model model) {
         try {
-            userService.registerUser(email, password, name, gender, age);
+            userService.registerUser(user.getEmail(), user.getPassword(), user.getName(), user.getGender(), user.getAge());
             model.addAttribute("message", "Регистрация прошла успешно");
         } catch (IllegalArgumentException e) {
             model.addAttribute("error", e.getMessage());
         }
 
-        return "registration";
+        return "login";
     }
 
     @GetMapping("/login")
@@ -69,7 +63,6 @@ public class UserController {
         } else {
             model.addAttribute("error", "Неверный email или пароль");
         }
-
-        return "login";
+        return "/";
     }
 }
