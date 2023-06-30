@@ -43,9 +43,11 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String showLoginForm() {
+    public String showLoginForm(Model model) {
+        model.addAttribute("user", new User());
         return "login";
     }
+
 
     @PostMapping("/login")
     public String loginUser(
@@ -60,6 +62,6 @@ public class UserController {
         } else {
             model.addAttribute("error", "Неверный email или пароль");
         }
-        return "/";
+        return "redirect:/";
     }
 }

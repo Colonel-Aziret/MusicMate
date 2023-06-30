@@ -1,0 +1,1221 @@
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+
+<div id="particles-js">
+    <div class="container">
+
+
+        <div class="frame">
+            <div class="nav">
+                <ul class="links">
+                    <li class="signin-active"><a class="btn">Sign in</a></li>
+                    <li class="signup-inactive"><a class="btn">Sign up </a></li>
+                </ul>
+            </div>
+            <div ng-app ng-init="checked = false">
+                <form class="form-signin" action="" method="post" name="form">
+                    <label for="username">Username</label>
+                    <input class="form-styling" type="text" name="username" placeholder=""/>
+                    <label for="password">Password</label>
+                    <input class="form-styling" type="text" name="password" placeholder=""/>
+                    <input type="checkbox" id="checkbox"/>
+                    <label for="checkbox"><span class="ui"></span>Keep me signed in</label>
+                    <div class="btn-animate">
+                        <a class="btn-signin">Sign in</a>
+                    </div>
+                </form>
+
+                <form class="form-signup" action="" method="post" name="form">
+                    <label for="fullname">Full name</label>
+                    <input class="form-styling" type="text" name="fullname" placeholder=""/>
+                    <label for="email">Email</label>
+                    <input class="form-styling" type="text" name="email" placeholder=""/>
+                    <label for="password">Password</label>
+                    <input class="form-styling" type="text" name="password" placeholder=""/>
+                    <label for="confirmpassword">Confirm password</label>
+                    <input class="form-styling" type="text" name="confirmpassword" placeholder=""/>
+                    <a ng-click="checked = !checked" class="btn-signup">Sign Up</a>
+                </form>
+
+                <div class="success">
+                    <svg width="270" height="270" xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 60 60" id="check" ng-class="checked ? 'checked' : ''">
+                        <path fill="#ffffff" d="M40.61,23.03L26.67,36.97L13.495,23.788c-1.146-1.147-1.359-2.936-0.504-4.314
+                  c3.894-6.28,11.169-10.243,19.283-9.348c9.258,1.021,16.694,8.542,17.622,17.81c1.232,12.295-8.683,22.607-20.849,22.042
+                  c-9.9-0.46-18.128-8.344-18.972-18.218c-0.292-3.416,0.276-6.673,1.51-9.578"/>
+                        <div class="successtext">
+                            <p> Thanks for signing up! Check your email for confirmation.</p>
+                        </div>
+                </div>
+            </div>
+
+            <div class="forgot">
+                <a href="#">Forgot your password?</a>
+            </div>
+
+            <div>
+                <div class="cover-photo"></div>
+                <div class="profile-photo"></div>
+                <h1 class="welcome">Welcome, Chris</h1>
+                <a class="btn-goback" value="Refresh" onClick="history.go()">Go back</a>
+            </div>
+        </div>
+
+        <a id="refresh" value="Refresh" onClick="history.go()">
+            <svg class="refreshicon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="25px" height="25px" viewBox="0 0 322.447 322.447"
+                 style="enable-background:new 0 0 322.447 322.447;"
+                 xml:space="preserve">
+         <path d="M321.832,230.327c-2.133-6.565-9.184-10.154-15.75-8.025l-16.254,5.281C299.785,206.991,305,184.347,305,161.224
+                c0-84.089-68.41-152.5-152.5-152.5C68.411,8.724,0,77.135,0,161.224s68.411,152.5,152.5,152.5c6.903,0,12.5-5.597,12.5-12.5
+                c0-6.902-5.597-12.5-12.5-12.5c-70.304,0-127.5-57.195-127.5-127.5c0-70.304,57.196-127.5,127.5-127.5
+                c70.305,0,127.5,57.196,127.5,127.5c0,19.372-4.371,38.337-12.723,55.568l-5.553-17.096c-2.133-6.564-9.186-10.156-15.75-8.025
+                c-6.566,2.134-10.16,9.186-8.027,15.751l14.74,45.368c1.715,5.283,6.615,8.642,11.885,8.642c1.279,0,2.582-0.198,3.865-0.614
+                l45.369-14.738C320.371,243.946,323.965,236.895,321.832,230.327z"/>
+    </svg>
+        </a>
+
+
+    </div>
+</div>
+
+
+<style>
+    /* ... ваш предыдущий CSS код ... */
+
+    .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form-content {
+        text-align: center;
+    }
+
+
+    /* ... ваш предыдущий CSS код ... */
+
+    @import url(https://fonts.googleapis.com/css?family=Teko:300,400,500,600);
+
+    html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        background: #1b356f;
+    }
+
+    body {
+        line-height: 1
+    }
+
+    article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+        display: block
+    }
+
+    nav ul {
+        list-style: none
+    }
+
+    blockquote, q {
+        quotes: none
+    }
+
+    blockquote:before, blockquote:after, q:before, q:after {
+        content: none
+    }
+
+    a {
+        margin: 0;
+        padding: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        background: transparent;
+        text-decoration: none
+    }
+
+    mark {
+        background-color: #ff9;
+        color: #000;
+        font-style: italic;
+        font-weight: bold
+    }
+
+    del {
+        text-decoration: line-through
+    }
+
+    abbr[title], dfn[title] {
+        border-bottom: 1px dotted;
+        cursor: help
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0
+    }
+
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #ccc;
+        margin: 1em 0;
+        padding: 0
+    }
+
+    input, select {
+        vertical-align: middle
+    }
+
+    li {
+        list-style: none
+    }
+
+
+    /* =============================================================================
+       My CSS
+       ========================================================================== */
+
+    html, body {
+        width: 100%;
+        height: 100%;
+        background: #000;
+    }
+
+    body {
+
+        background: url(https://i.imgur.com/2vOXiPV.jpg?1);
+
+    }
+
+    /* remove canvas default margin */
+    canvas {
+        display: block;
+        vertical-align: bottom;
+    }
+
+    #particles-js {
+        width: 100%;
+        height: 100%;
+    }
+
+    html, body * {
+        box-sizing: border-box;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    body {
+        background: linear-gradient(
+                rgba(246, 247, 249, 0.8),
+                rgba(246, 247, 249, 0.8)),
+        url(https://dl.dropboxusercontent.com/u/22006283/preview/codepen/sky-clouds-cloudy-mountain.jpg) no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .container {
+        width: 30%;
+        padding-top: 60px;
+        padding-bottom: 100px;
+    }
+
+    .frame {
+        height: 575px;
+        width: 500px;
+        background: linear-gradient(
+                rgba(35, 43, 85, 0.75),
+                rgba(35, 43, 85, 0.95)),
+        url(https://dl.dropboxusercontent.com/u/22006283/preview/codepen/clouds-cloudy-forest-mountain.jpg) no-repeat center center;
+        background-size: cover;
+        margin-left: auto;
+        margin-right: auto;
+        border-top: solid 1px rgba(255, 255, 255, .5);
+        border-radius: 30px;
+        box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        transition: all .5s ease;
+        border: 2px solid #ffffff;
+    }
+
+    .frame-long {
+        height: 615px;
+    }
+
+    .frame-short {
+        height: 400px;
+        margin-top: 50px;
+        box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav {
+        width: 100%;
+        height: 100px;
+        padding-top: 40px;
+        opacity: 1;
+        transition: all .5s ease;
+    }
+
+    .nav-up {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+
+    li {
+        padding-left: 32px;
+        font-size: 18px;
+        display: inline;
+        text-align: left;
+        text-transform: uppercase;
+        padding-right: 10px;
+        color: #ffffff;
+    }
+
+    .signin-active a {
+        padding-bottom: 10px;
+        color: #ffffff;
+        text-decoration: none;
+        border-bottom: solid 2px #1059FF;
+        transition: all .25s ease;
+        cursor: pointer;
+    }
+
+    .signin-inactive a {
+        padding-bottom: 0;
+        color: rgba(255, 255, 255, .3);
+        text-decoration: none;
+        border-bottom: none;
+        cursor: pointer;
+    }
+
+    .signup-active a {
+        cursor: pointer;
+        color: #ffffff;
+        text-decoration: none;
+        border-bottom: solid 2px #1059FF;
+        padding-bottom: 10px;
+    }
+
+    .signup-inactive a {
+        cursor: pointer;
+        color: rgba(255, 255, 255, .3);
+        text-decoration: none;
+        transition: all .25s ease;
+    }
+
+    .form-signin {
+        width: 430px;
+        height: 375px;
+        font-size: 16px;
+        font-weight: 300;
+        padding-left: 65px;
+        padding-right: 3px;
+        padding-top: 55px;
+        transition: opacity .5s ease, transform .5s ease;
+    }
+
+    .form-signin-left {
+        transform: translateX(-400px);
+        opacity: .0;
+    }
+
+    .form-signup {
+        width: 430px;
+        height: 375px;
+        font-size: 16px;
+        font-weight: 300;
+        padding-left: 65px;
+        padding-right: 3px;
+        padding-top: 55px;
+        position: relative;
+        top: -375px;
+        left: 400px;
+        opacity: 0;
+        transition: all .5s ease;
+    }
+
+    .form-signup-left {
+        transform: translateX(-399px);
+        opacity: 1;
+    }
+
+    .form-signup-down {
+        top: 0px;
+        opacity: 0;
+    }
+
+    .success {
+        width: 80%;
+        height: 150px;
+        text-align: center;
+        position: relative;
+        top: -890px;
+        left: 450px;
+        opacity: .0;
+        transition: all .8s .4s ease;
+    }
+
+    .success-left {
+        transform: translateX(-406px);
+        opacity: 1;
+    }
+
+    .successtext {
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 300;
+        margin-top: -35px;
+        padding-left: 37px;
+        padding-right: 37px;
+    }
+
+    #check path {
+        stroke: #ffffff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: .85px;
+        stroke-dasharray: 60px 300px;
+        stroke-dashoffset: -166px;
+        fill: rgba(255, 255, 255, .0);
+        transition: stroke-dashoffset 2s ease .5s, fill 1.5s ease 1.0s;
+    }
+
+    #check.checked path {
+        stroke-dashoffset: 33px;
+        fill: rgba(255, 255, 255, .03);
+    }
+
+    .form-signin input, .form-signup input {
+        color: #ffffff;
+        font-size: 13px;
+    }
+
+    .form-styling {
+        width: 100%;
+        height: 35px;
+        padding-left: 15px;
+        border: none;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        background: rgba(255, 255, 255, .2);
+    }
+
+    label {
+        font-weight: 400;
+        text-transform: uppercase;
+        font-size: 13px;
+        padding-left: 15px;
+        padding-bottom: 10px;
+        color: rgba(255, 255, 255, .7);
+        display: block;
+    }
+
+    :focus {
+        outline: none;
+    }
+
+    .form-signin input:focus, textarea:focus, .form-signup input:focus, textarea:focus {
+        background: rgba(255, 255, 255, .3);
+        border: none;
+        padding-right: 40px;
+        transition: background .5s ease;
+    }
+
+    [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: absolute;
+        display: none;
+    }
+
+    [type="checkbox"]:not(:checked) + label,
+    [type="checkbox"]:checked + label {
+        position: relative;
+        padding-left: 85px;
+        padding-top: 2px;
+        cursor: pointer;
+        margin-top: 8px;
+    }
+
+    [type="checkbox"]:not(:checked) + label:before,
+    [type="checkbox"]:checked + label:before,
+    [type="checkbox"]:not(:checked) + label:after,
+    [type="checkbox"]:checked + label:after {
+        content: '';
+        position: absolute;
+    }
+
+    [type="checkbox"]:not(:checked) + label:before,
+    [type="checkbox"]:checked + label:before {
+        width: 65px;
+        height: 30px;
+        background: rgba(255, 255, 255, .2);
+        border-radius: 15px;
+        left: 0;
+        top: -3px;
+        transition: all .2s ease;
+    }
+
+    [type="checkbox"]:not(:checked) + label:after,
+    [type="checkbox"]:checked + label:after {
+        width: 10px;
+        height: 10px;
+        background: rgba(255, 255, 255, .7);
+        border-radius: 50%;
+        top: 7px;
+        left: 10px;
+        transition: all .2s ease;
+    }
+
+    /* on checked */
+    [type="checkbox"]:checked + label:before {
+        background: #0F4FE6;
+    }
+
+    [type="checkbox"]:checked + label:after {
+        background: #ffffff;
+        top: 7px;
+        left: 45px;
+    }
+
+    [type="checkbox"]:checked + label .ui,
+    [type="checkbox"]:not(:checked) + label .ui:before,
+    [type="checkbox"]:checked + label .ui:after {
+        position: absolute;
+        left: 6px;
+        width: 65px;
+        border-radius: 15px;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 22px;
+        transition: all .2s ease;
+    }
+
+    [type="checkbox"]:not(:checked) + label .ui:before {
+        content: "no";
+        left: 32px;
+        color: rgba(255, 255, 255, .7);
+    }
+
+    [type="checkbox"]:checked + label .ui:after {
+        content: "yes";
+        color: #ffffff;
+    }
+
+    [type="checkbox"]:focus + label:before {
+        box-sizing: border-box;
+        margin-top: -1px;
+    }
+
+    .btn-signup {
+        float: left;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 13px;
+        text-align: center;
+        color: #ffffff;
+        padding-top: 8px;
+        width: 100%;
+        height: 35px;
+        border: none;
+        border-radius: 20px;
+        margin-top: 23px;
+        background-color: #1059FF;
+    }
+
+    .btn-signin {
+        float: left;
+        padding-top: 8px;
+        width: 100%;
+        height: 35px;
+        border: none;
+        border-radius: 20px;
+        margin-top: -8px;
+    }
+
+    .btn-animate {
+        float: left;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 13px;
+        text-align: center;
+        color: rgba(255, 255, 255, 1);
+        padding-top: 8px;
+        width: 100%;
+        height: 35px;
+        border: none;
+        border-radius: 20px;
+        margin-top: 23px;
+        background-color: rgba(16, 89, 255, 1);
+        left: 0px;
+        top: 0px;
+        transition: all .5s ease, top .5s ease .5s, height .5s ease .5s, background-color .5s ease .75s;
+    }
+
+    .btn-animate-grow {
+        width: 130%;
+        height: 625px;
+        position: relative;
+        left: -55px;
+        top: -420px;
+        color: rgba(255, 255, 255, 0);
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    a.btn-signup:hover, a.btn-signin:hover {
+        cursor: pointer;
+        background-color: #0F4FE6;
+        transition: background-color .5s;
+    }
+
+    .forgot {
+        height: 100px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        padding-top: 24px;
+        margin-top: -535px;
+        border-top: solid 1px rgba(255, 255, 255, .3);
+        transition: all 0.5s ease;
+    }
+
+    .forgot-left {
+        transform: translateX(-400px);
+        opacity: 0;
+    }
+
+    .forgot-fade {
+        opacity: 0;
+    }
+
+    .forgot a {
+        color: rgba(255, 255, 255, .3);
+        font-weight: 400;
+        font-size: 13px;
+        text-decoration: none;
+    }
+
+    .welcome {
+        width: 100%;
+        height: 50px;
+        position: relative;
+        color: rgba(35, 43, 85, 0.75);
+        opacity: 0;
+        transition: transform 1.5s ease .25s, opacity .1s ease 1s;
+    }
+
+    .welcome-left {
+        transform: translateY(-780px);
+        opacity: 1;
+    }
+
+    .cover-photo {
+        height: 150px;
+        position: relative;
+        left: 0px;
+        top: -900px;
+        background: linear-gradient(
+                rgba(35, 43, 85, 0.75),
+                rgba(35, 43, 85, 0.95)),
+        url(https://dl.dropboxusercontent.com/u/22006283/preview/codepen/landscape-nature-man-person.jpeg);
+        background-size: cover;
+        opacity: 0;
+        transition: all 1.5s ease 0.55s;
+    }
+
+    .cover-photo-down {
+        top: -575px;
+        opacity: 1;
+    }
+
+    .profile-photo {
+        height: 125px;
+        width: 125px;
+        position: relative;
+        border-radius: 70px;
+        left: 155px;
+        top: -1000px;
+        background: url(https://dl.dropboxusercontent.com/u/22006283/preview/codepen/nature-water-rocks-hiking.jpg);
+        background-size: 100% 135%;
+        background-position: 100% 100%;
+        opacity: 0;
+        transition: top 1.5s ease 0.35s, opacity .75s ease .5s;
+        border: solid 3px #ffffff;
+    }
+
+    .profile-photo-down {
+        top: -636px;
+        opacity: 1;
+    }
+
+    h1 {
+        color: #ffffff;
+        font-size: 35px;
+        font-weight: 300;
+        text-align: center;
+    }
+
+    .btn-goback {
+        position: relative;
+        margin-right: auto;
+        top: -400px;
+        float: left;
+        padding: 8px;
+        width: 83%;
+        margin-left: 37px;
+        margin-right: 37px;
+        height: 35px;
+        border-radius: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 13px;
+        text-align: center;
+        color: #1059FF;
+        margin-top: -8px;
+        border: solid 1px #1059FF;
+        opacity: 0;
+        transition: top 1.5s ease 0.35s, opacity .75s ease .5s;
+    }
+
+    .btn-goback-up {
+        top: -1080px;
+        opacity: 1;
+    }
+
+    a.btn-goback:hover {
+        cursor: pointer;
+        background-color: #0F4FE6;
+        transition: all .5s;
+        color: #ffffff;
+    }
+
+    /* refresh button styling */
+
+    #refresh {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #ffffff;
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.1);
+        padding: 13px 0 0 13px;
+    }
+
+    .refreshicon {
+        fill: #d3d3d3;
+        transform: rotate(0deg);
+        transition: fill .25s ease, transform .25s ease;
+    }
+
+    .refreshicon:hover {
+        cursor: pointer;
+        fill: #1059FF;
+        transform: rotate(180deg);
+    }
+</style>
+<script>
+    function launchParticlesJS(a, e) {
+        var i = document.querySelector("#" + a + " > canvas");
+        pJS = {
+            canvas: {el: i, w: i.offsetWidth, h: i.offsetHeight},
+            particles: {
+                color: "#fff",
+                shape: "circle",
+                opacity: 1,
+                size: 2.5,
+                size_random: true,
+                nb: 200,
+                line_linked: {
+                    enable_auto: true,
+                    distance: 100,
+                    color: "#fff",
+                    opacity: 1,
+                    width: 1,
+                    condensed_mode: {enable: true, rotateX: 65000, rotateY: 65000}
+                },
+                anim: {enable: true, speed: 1},
+                array: []
+            },
+            interactivity: {
+                enable: true,
+                mouse: {distance: 100},
+                detect_on: "canvas",
+                mode: "grab",
+                line_linked: {opacity: 1},
+                events: {onclick: {enable: true, mode: "push", nb: 4}}
+            },
+            retina_detect: false,
+            fn: {vendors: {interactivity: {}}}
+        };
+        if (e) {
+            if (e.particles) {
+                var b = e.particles;
+                if (b.color) {
+                    pJS.particles.color = b.color
+                }
+                if (b.shape) {
+                    pJS.particles.shape = b.shape
+                }
+                if (b.opacity) {
+                    pJS.particles.opacity = b.opacity
+                }
+                if (b.size) {
+                    pJS.particles.size = b.size
+                }
+                if (b.size_random == false) {
+                    pJS.particles.size_random = b.size_random
+                }
+                if (b.nb) {
+                    pJS.particles.nb = b.nb
+                }
+                if (b.line_linked) {
+                    var j = b.line_linked;
+                    if (j.enable_auto == false) {
+                        pJS.particles.line_linked.enable_auto = j.enable_auto
+                    }
+                    if (j.distance) {
+                        pJS.particles.line_linked.distance = j.distance
+                    }
+                    if (j.color) {
+                        pJS.particles.line_linked.color = j.color
+                    }
+                    if (j.opacity) {
+                        pJS.particles.line_linked.opacity = j.opacity
+                    }
+                    if (j.width) {
+                        pJS.particles.line_linked.width = j.width
+                    }
+                    if (j.condensed_mode) {
+                        var g = j.condensed_mode;
+                        if (g.enable == false) {
+                            pJS.particles.line_linked.condensed_mode.enable = g.enable
+                        }
+                        if (g.rotateX) {
+                            pJS.particles.line_linked.condensed_mode.rotateX = g.rotateX
+                        }
+                        if (g.rotateY) {
+                            pJS.particles.line_linked.condensed_mode.rotateY = g.rotateY
+                        }
+                    }
+                }
+                if (b.anim) {
+                    var k = b.anim;
+                    if (k.enable == false) {
+                        pJS.particles.anim.enable = k.enable
+                    }
+                    if (k.speed) {
+                        pJS.particles.anim.speed = k.speed
+                    }
+                }
+            }
+            if (e.interactivity) {
+                var c = e.interactivity;
+                if (c.enable == false) {
+                    pJS.interactivity.enable = c.enable
+                }
+                if (c.mouse) {
+                    if (c.mouse.distance) {
+                        pJS.interactivity.mouse.distance = c.mouse.distance
+                    }
+                }
+                if (c.detect_on) {
+                    pJS.interactivity.detect_on = c.detect_on
+                }
+                if (c.mode) {
+                    pJS.interactivity.mode = c.mode
+                }
+                if (c.line_linked) {
+                    if (c.line_linked.opacity) {
+                        pJS.interactivity.line_linked.opacity = c.line_linked.opacity
+                    }
+                }
+                if (c.events) {
+                    var d = c.events;
+                    if (d.onclick) {
+                        var h = d.onclick;
+                        if (h.enable == false) {
+                            pJS.interactivity.events.onclick.enable = false
+                        }
+                        if (h.mode != "push") {
+                            pJS.interactivity.events.onclick.mode = h.mode
+                        }
+                        if (h.nb) {
+                            pJS.interactivity.events.onclick.nb = h.nb
+                        }
+                    }
+                }
+            }
+            pJS.retina_detect = e.retina_detect
+        }
+        pJS.particles.color_rgb = hexToRgb(pJS.particles.color);
+        pJS.particles.line_linked.color_rgb_line = hexToRgb(pJS.particles.line_linked.color);
+        if (pJS.retina_detect && window.devicePixelRatio > 1) {
+            pJS.retina = true;
+            pJS.canvas.pxratio = window.devicePixelRatio;
+            pJS.canvas.w = pJS.canvas.el.offsetWidth * pJS.canvas.pxratio;
+            pJS.canvas.h = pJS.canvas.el.offsetHeight * pJS.canvas.pxratio;
+            pJS.particles.anim.speed = pJS.particles.anim.speed * pJS.canvas.pxratio;
+            pJS.particles.line_linked.distance = pJS.particles.line_linked.distance * pJS.canvas.pxratio;
+            pJS.particles.line_linked.width = pJS.particles.line_linked.width * pJS.canvas.pxratio;
+            pJS.interactivity.mouse.distance = pJS.interactivity.mouse.distance * pJS.canvas.pxratio
+        }
+        pJS.fn.canvasInit = function () {
+            pJS.canvas.ctx = pJS.canvas.el.getContext("2d")
+        };
+        pJS.fn.canvasSize = function () {
+            pJS.canvas.el.width = pJS.canvas.w;
+            pJS.canvas.el.height = pJS.canvas.h;
+            window.onresize = function () {
+                if (pJS) {
+                    pJS.canvas.w = pJS.canvas.el.offsetWidth;
+                    pJS.canvas.h = pJS.canvas.el.offsetHeight;
+                    if (pJS.retina) {
+                        pJS.canvas.w *= pJS.canvas.pxratio;
+                        pJS.canvas.h *= pJS.canvas.pxratio
+                    }
+                    pJS.canvas.el.width = pJS.canvas.w;
+                    pJS.canvas.el.height = pJS.canvas.h;
+                    pJS.fn.canvasPaint();
+                    if (!pJS.particles.anim.enable) {
+                        pJS.fn.particlesRemove();
+                        pJS.fn.canvasRemove();
+                        f()
+                    }
+                }
+            }
+        };
+        pJS.fn.canvasPaint = function () {
+            pJS.canvas.ctx.fillRect(0, 0, pJS.canvas.w, pJS.canvas.h)
+        };
+        pJS.fn.canvasRemove = function () {
+            pJS.canvas.ctx.clearRect(0, 0, pJS.canvas.w, pJS.canvas.h)
+        };
+        pJS.fn.particle = function (n, o, m) {
+            this.x = m ? m.x : Math.random() * pJS.canvas.w;
+            this.y = m ? m.y : Math.random() * pJS.canvas.h;
+            this.radius = (pJS.particles.size_random ? Math.random() : 1) * pJS.particles.size;
+            if (pJS.retina) {
+                this.radius *= pJS.canvas.pxratio
+            }
+            this.color = n;
+            this.opacity = o;
+            this.vx = -0.5 + Math.random();
+            this.vy = -0.5 + Math.random();
+            this.draw = function () {
+                pJS.canvas.ctx.fillStyle = "rgba(" + this.color.r + "," + this.color.g + "," + this.color.b + "," + this.opacity + ")";
+                pJS.canvas.ctx.beginPath();
+                switch (pJS.particles.shape) {
+                    case"circle":
+                        pJS.canvas.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                        break;
+                    case"edge":
+                        pJS.canvas.ctx.rect(this.x, this.y, this.radius * 2, this.radius * 2);
+                        break;
+                    case"triangle":
+                        pJS.canvas.ctx.moveTo(this.x, this.y - this.radius);
+                        pJS.canvas.ctx.lineTo(this.x + this.radius, this.y + this.radius);
+                        pJS.canvas.ctx.lineTo(this.x - this.radius, this.y + this.radius);
+                        pJS.canvas.ctx.closePath();
+                        break
+                }
+                pJS.canvas.ctx.fill()
+            }
+        };
+        pJS.fn.particlesCreate = function () {
+            for (var m = 0; m < pJS.particles.nb; m++) {
+                pJS.particles.array.push(new pJS.fn.particle(pJS.particles.color_rgb, pJS.particles.opacity))
+            }
+        };
+        pJS.fn.particlesAnimate = function () {
+            for (var n = 0; n < pJS.particles.array.length; n++) {
+                var q = pJS.particles.array[n];
+                q.x += q.vx * (pJS.particles.anim.speed / 2);
+                q.y += q.vy * (pJS.particles.anim.speed / 2);
+                if (q.x - q.radius > pJS.canvas.w) {
+                    q.x = q.radius
+                } else {
+                    if (q.x + q.radius < 0) {
+                        q.x = pJS.canvas.w + q.radius
+                    }
+                }
+                if (q.y - q.radius > pJS.canvas.h) {
+                    q.y = q.radius
+                } else {
+                    if (q.y + q.radius < 0) {
+                        q.y = pJS.canvas.h + q.radius
+                    }
+                }
+                for (var m = n + 1; m < pJS.particles.array.length; m++) {
+                    var o = pJS.particles.array[m];
+                    if (pJS.particles.line_linked.enable_auto) {
+                        pJS.fn.vendors.distanceParticles(q, o)
+                    }
+                    if (pJS.interactivity.enable) {
+                        switch (pJS.interactivity.mode) {
+                            case"grab":
+                                pJS.fn.vendors.interactivity.grabParticles(q, o);
+                                break
+                        }
+                    }
+                }
+            }
+        };
+        pJS.fn.particlesDraw = function () {
+            pJS.canvas.ctx.clearRect(0, 0, pJS.canvas.w, pJS.canvas.h);
+            pJS.fn.particlesAnimate();
+            for (var m = 0; m < pJS.particles.array.length; m++) {
+                var n = pJS.particles.array[m];
+                n.draw("rgba(" + n.color.r + "," + n.color.g + "," + n.color.b + "," + n.opacity + ")")
+            }
+        };
+        pJS.fn.particlesRemove = function () {
+            pJS.particles.array = []
+        };
+        pJS.fn.vendors.distanceParticles = function (t, r) {
+            var o = t.x - r.x, n = t.y - r.y, s = Math.sqrt(o * o + n * n);
+            if (s <= pJS.particles.line_linked.distance) {
+                var m = pJS.particles.line_linked.color_rgb_line;
+                pJS.canvas.ctx.beginPath();
+                pJS.canvas.ctx.strokeStyle = "rgba(" + m.r + "," + m.g + "," + m.b + "," + (pJS.particles.line_linked.opacity - s / pJS.particles.line_linked.distance) + ")";
+                pJS.canvas.ctx.moveTo(t.x, t.y);
+                pJS.canvas.ctx.lineTo(r.x, r.y);
+                pJS.canvas.ctx.lineWidth = pJS.particles.line_linked.width;
+                pJS.canvas.ctx.stroke();
+                pJS.canvas.ctx.closePath();
+                if (pJS.particles.line_linked.condensed_mode.enable) {
+                    var o = t.x - r.x, n = t.y - r.y, q = o / (pJS.particles.line_linked.condensed_mode.rotateX * 1000),
+                        p = n / (pJS.particles.line_linked.condensed_mode.rotateY * 1000);
+                    r.vx += q;
+                    r.vy += p
+                }
+            }
+        };
+        pJS.fn.vendors.interactivity.listeners = function () {
+            if (pJS.interactivity.detect_on == "window") {
+                var m = window
+            } else {
+                var m = pJS.canvas.el
+            }
+            m.onmousemove = function (p) {
+                if (m == window) {
+                    var o = p.clientX, n = p.clientY
+                } else {
+                    var o = p.offsetX || p.clientX, n = p.offsetY || p.clientY
+                }
+                if (pJS) {
+                    pJS.interactivity.mouse.pos_x = o;
+                    pJS.interactivity.mouse.pos_y = n;
+                    if (pJS.retina) {
+                        pJS.interactivity.mouse.pos_x *= pJS.canvas.pxratio;
+                        pJS.interactivity.mouse.pos_y *= pJS.canvas.pxratio
+                    }
+                    pJS.interactivity.status = "mousemove"
+                }
+            };
+            m.onmouseleave = function (n) {
+                if (pJS) {
+                    pJS.interactivity.mouse.pos_x = 0;
+                    pJS.interactivity.mouse.pos_y = 0;
+                    pJS.interactivity.status = "mouseleave"
+                }
+            };
+            if (pJS.interactivity.events.onclick.enable) {
+                switch (pJS.interactivity.events.onclick.mode) {
+                    case"push":
+                        m.onclick = function (o) {
+                            if (pJS) {
+                                for (var n = 0; n < pJS.interactivity.events.onclick.nb; n++) {
+                                    pJS.particles.array.push(new pJS.fn.particle(pJS.particles.color_rgb, pJS.particles.opacity, {
+                                        x: pJS.interactivity.mouse.pos_x,
+                                        y: pJS.interactivity.mouse.pos_y
+                                    }))
+                                }
+                            }
+                        };
+                        break;
+                    case"remove":
+                        m.onclick = function (n) {
+                            pJS.particles.array.splice(0, pJS.interactivity.events.onclick.nb)
+                        };
+                        break
+                }
+            }
+        };
+        pJS.fn.vendors.interactivity.grabParticles = function (r, q) {
+            var u = r.x - q.x, s = r.y - q.y, p = Math.sqrt(u * u + s * s);
+            var t = r.x - pJS.interactivity.mouse.pos_x, n = r.y - pJS.interactivity.mouse.pos_y,
+                o = Math.sqrt(t * t + n * n);
+            if (p <= pJS.particles.line_linked.distance && o <= pJS.interactivity.mouse.distance && pJS.interactivity.status == "mousemove") {
+                var m = pJS.particles.line_linked.color_rgb_line;
+                pJS.canvas.ctx.beginPath();
+                pJS.canvas.ctx.strokeStyle = "rgba(" + m.r + "," + m.g + "," + m.b + "," + (pJS.interactivity.line_linked.opacity - o / pJS.interactivity.mouse.distance) + ")";
+                pJS.canvas.ctx.moveTo(r.x, r.y);
+                pJS.canvas.ctx.lineTo(pJS.interactivity.mouse.pos_x, pJS.interactivity.mouse.pos_y);
+                pJS.canvas.ctx.lineWidth = pJS.particles.line_linked.width;
+                pJS.canvas.ctx.stroke();
+                pJS.canvas.ctx.closePath()
+            }
+        };
+        pJS.fn.vendors.destroy = function () {
+            cancelAnimationFrame(pJS.fn.requestAnimFrame);
+            i.remove();
+            delete pJS
+        };
+
+        function f() {
+            pJS.fn.canvasInit();
+            pJS.fn.canvasSize();
+            pJS.fn.canvasPaint();
+            pJS.fn.particlesCreate();
+            pJS.fn.particlesDraw()
+        }
+
+        function l() {
+            pJS.fn.particlesDraw();
+            pJS.fn.requestAnimFrame = requestAnimFrame(l)
+        }
+
+        f();
+        if (pJS.particles.anim.enable) {
+            l()
+        }
+        if (pJS.interactivity.enable) {
+            pJS.fn.vendors.interactivity.listeners()
+        }
+    }
+
+    window.requestAnimFrame = (function () {
+        return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (a) {
+            window.setTimeout(a, 1000 / 60)
+        }
+    })();
+    window.cancelRequestAnimFrame = (function () {
+        return window.cancelAnimationFrame || window.webkitCancelRequestAnimationFrame || window.mozCancelRequestAnimationFrame || window.oCancelRequestAnimationFrame || window.msCancelRequestAnimationFrame || clearTimeout
+    })();
+
+    function hexToRgb(c) {
+        var b = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+        c = c.replace(b, function (e, h, f, d) {
+            return h + h + f + f + d + d
+        });
+        var a = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(c);
+        return a ? {r: parseInt(a[1], 16), g: parseInt(a[2], 16), b: parseInt(a[3], 16)} : null
+    }
+
+    window.particlesJS = function (d, c) {
+        if (typeof (d) != "string") {
+            c = d;
+            d = "particles-js"
+        }
+        if (!d) {
+            d = "particles-js"
+        }
+        var b = document.createElement("canvas");
+        b.style.width = "100%";
+        b.style.height = "100%";
+        var a = document.getElementById(d).appendChild(b);
+        if (a != null) {
+            launchParticlesJS(d, c)
+        }
+    };
+
+    /* particlesJS('dom-id', params);
+    /* @dom-id : set the html tag id [string, optional, default value : particles-js]
+    /* @params: set the params [object, optional, default values : check particles.js] */
+
+    /* config dom id (optional) + config particles params */
+    particlesJS('particles-js', {
+        particles: {
+            color: '#fff',
+            shape: 'circle', // "circle", "edge" or "triangle"
+            opacity: 1,
+            size: 4,
+            size_random: true,
+            nb: 150,
+            line_linked: {
+                enable_auto: true,
+                distance: 100,
+                color: '#fff',
+                opacity: 1,
+                width: 1,
+                condensed_mode: {
+                    enable: false,
+                    rotateX: 600,
+                    rotateY: 600
+                }
+            },
+            anim: {
+                enable: true,
+                speed: 1
+            }
+        },
+        interactivity: {
+            enable: true,
+            mouse: {
+                distance: 250
+            },
+            detect_on: 'canvas', // "canvas" or "window"
+            mode: 'grab',
+            line_linked: {
+                opacity: .5
+            },
+            events: {
+                onclick: {
+                    enable: true,
+                    mode: 'push', // "push" or "remove" (particles)
+                    nb: 4
+                }
+            }
+        },
+        /* Retina Display Support */
+        retina_detect: true
+    });
+    $(function () {
+        $(".btn").click(function () {
+            $(".form-signin").toggleClass("form-signin-left");
+            $(".form-signup").toggleClass("form-signup-left");
+            $(".frame").toggleClass("frame-long");
+            $(".signup-inactive").toggleClass("signup-active");
+            $(".signin-active").toggleClass("signin-inactive");
+            $(".forgot").toggleClass("forgot-left");
+            $(this).removeClass("idle").addClass("active");
+        });
+    });
+
+    $(function () {
+        $(".btn-signup").click(function () {
+            $(".nav").toggleClass("nav-up");
+            $(".form-signup-left").toggleClass("form-signup-down");
+            $(".success").toggleClass("success-left");
+            $(".frame").toggleClass("frame-short");
+        });
+    });
+
+    $(function () {
+        $(".btn-signin").click(function () {
+            $(".btn-animate").toggleClass("btn-animate-grow");
+            $(".welcome").toggleClass("welcome-left");
+            $(".cover-photo").toggleClass("cover-photo-down");
+            $(".frame").toggleClass("frame-short");
+            $(".profile-photo").toggleClass("profile-photo-down");
+            $(".btn-goback").toggleClass("btn-goback-up");
+            $(".forgot").toggleClass("forgot-fade");
+        });
+    });
+</script>
