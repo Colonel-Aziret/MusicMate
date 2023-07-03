@@ -55,4 +55,22 @@ public class UserServiceImpl implements UserService {
 
         return null;
     }
+
+    @Override
+    public void resetPassword(String email, String newPassword) {
+        // Найти пользователя по email
+        User user = userRepository.findByEmail(email);
+
+        // Если пользователя с таким email не существует, можно выбросить исключение или обработать эту ситуацию иным способом
+        if (user == null) {
+            throw new IllegalArgumentException("Пользователь с таким email не найден");
+        }
+
+        // Установить новый зашифрованный пароль
+        String encodedPassword = passwordEncoder.encode(newPassword);
+        user.setPassword(encodedPassword);
+
+        // Сохранить обновленные данные пользователя в базе данных
+        userRepository.save(user);
+    }
 }

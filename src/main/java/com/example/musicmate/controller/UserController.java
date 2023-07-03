@@ -1,12 +1,15 @@
 package com.example.musicmate.controller;
 
+import antlr.Token;
 import com.example.musicmate.entity.User;
 import com.example.musicmate.repository.UserRepository;
+import com.example.musicmate.service.PasswordResetService;
 import com.example.musicmate.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.regex.Pattern;
@@ -18,6 +21,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private PasswordResetService passwordResetService;
 
     @Autowired
     public UserController(UserService userService) {
@@ -62,4 +68,6 @@ public class UserController {
         }
         return "/";
     }
+
+
 }
