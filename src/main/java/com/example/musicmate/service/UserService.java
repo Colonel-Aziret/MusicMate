@@ -9,4 +9,8 @@ public interface UserService {
 
     void resetPassword(String email, String newPassword);
 
+    User findByEmail(String email);
+
+    void update(User user);
+
 }

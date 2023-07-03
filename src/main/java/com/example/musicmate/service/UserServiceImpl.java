@@ -73,4 +73,12 @@ public class UserServiceImpl implements UserService {
         // Сохранить обновленные данные пользователя в базе данных
         userRepository.save(user);
     }
+
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    public void update(User user) {
+        this.userRepository.save(user);
+    }
 }

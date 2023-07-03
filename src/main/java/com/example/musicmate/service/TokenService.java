@@ -39,7 +39,7 @@ public class TokenService {
     }
 
     public Token findByUserAndToken(User user, Integer token) {
-        return (Token) tokenRepository.findByTokenAndUsers(token, user)
+        return (Token) tokenRepository.findByTokenAndUser(token, user)
                 .orElseThrow(() -> new NoSuchElementException(String.format("Не найден токен %s для пользователя", token, user.getEmail())));
     }
 }
