@@ -23,6 +23,8 @@ public class EmailSenderService {
         message.setSubject(subject);
 
         emailSender.send(message);
+
+        System.out.println("Mail send successfully");
     }
 }
 

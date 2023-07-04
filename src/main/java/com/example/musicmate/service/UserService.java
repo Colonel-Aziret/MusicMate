@@ -7,8 +7,6 @@ public interface UserService {
 
     User authenticateUser(String email, String password);
 
-    void resetPassword(String email, String newPassword);
-
     User findByEmail(String email);
 
     void update(User user);

@@ -1,6 +1,7 @@
 package com.example.musicmate.config;
 
 import com.example.musicmate.entity.User;
+import com.example.musicmate.enums.Role;
 import com.example.musicmate.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +30,11 @@ public class CustomizeAuthenticationSuccessHandler implements AuthenticationSucc
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         response.setStatus(HttpServletResponse.SC_OK);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findByEmail(authentication.getName());
-        response.sendRedirect("/");
+        User user = userService.findByEmail(auth.getName());
+        if (user.getRole().equals(Role.ADMIN)) {
+            response.sendRedirect("/");
+        } else if (user.getRole().equals(Role.USER)) {
+            response.sendRedirect("/managerMain");
+        }
     }
 }

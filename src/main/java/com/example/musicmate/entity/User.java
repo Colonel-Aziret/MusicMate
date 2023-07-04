@@ -1,5 +1,6 @@
 package com.example.musicmate.entity;
 
+import com.example.musicmate.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,5 +31,9 @@ public class User {
 
     @Column(name = "age")
     private int age;
+
+    @Column(name = "ROLE")
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
 }

@@ -6,7 +6,6 @@ import com.example.musicmate.entity.Token;
 import com.example.musicmate.entity.User;
 import com.example.musicmate.repository.UserRepository;
 import com.example.musicmate.service.EmailSenderService;
-import com.example.musicmate.service.PasswordResetService;
 import com.example.musicmate.service.TokenService;
 import com.example.musicmate.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.mail.MessagingException;
-import javax.validation.Valid;
-import java.util.regex.Pattern;
 
 @Controller
 public class UserController {
@@ -28,8 +25,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private PasswordResetService passwordResetService;
 
     @Autowired
     private TokenService tokenService;
@@ -64,7 +59,9 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String showLoginForm() {
+    public String showLoginForm(Model model) {
+        model.addAttribute("user",new User());
+
         return "login";
     }
 
@@ -81,7 +78,7 @@ public class UserController {
         } else {
             model.addAttribute("error", "Неверный email или пароль");
         }
-        return "main";
+        return "redirect:/";
     }
 
     @GetMapping(value = "/reset-password")

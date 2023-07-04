@@ -3,20 +3,21 @@ package com.example.musicmate.service;
 import com.example.musicmate.entity.User;
 import com.example.musicmate.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
     @Autowired
     private UserRepository userRepository;
-    private final BCryptPasswordEncoder passwordEncoder;
-
-    @Autowired
-    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Override
     public User registerUser(String email, String password, String name, String gender, int age) {
@@ -45,6 +46,10 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
+    public void update(User user) {
+        this.userRepository.save(user);
+    }
+
     @Override
     public User authenticateUser(String email, String password) {
         User user = userRepository.findByEmail(email);
@@ -56,29 +61,20 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
-    @Override
-    public void resetPassword(String email, String newPassword) {
-        // Найти пользователя по email
-        User user = userRepository.findByEmail(email);
-
-        // Если пользователя с таким email не существует, можно выбросить исключение или обработать эту ситуацию иным способом
-        if (user == null) {
-            throw new IllegalArgumentException("Пользователь с таким email не найден");
-        }
-
-        // Установить новый зашифрованный пароль
-        String encodedPassword = passwordEncoder.encode(newPassword);
-        user.setPassword(encodedPassword);
-
-        // Сохранить обновленные данные пользователя в базе данных
-        userRepository.save(user);
-    }
 
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
-    public void update(User user) {
-        this.userRepository.save(user);
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = this.userRepository.findFirstByEmail(email);
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found");
+        }
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(user.getRole().getName()));
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
     }
 }
