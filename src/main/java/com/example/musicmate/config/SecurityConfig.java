@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .mvcMatchers("/", "/register", "login").permitAll()
+                .mvcMatchers("/", "/register", "/login", "/reset-password", "/password-recovery-email", "/new-password-user", "/music").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable();
