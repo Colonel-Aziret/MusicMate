@@ -44,7 +44,7 @@ public class MusicController {
         }
 
         songRepository.save(song);
-        return "redirect:/";
+        return "redirect:/music";
     }
 }
 

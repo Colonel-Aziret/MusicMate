@@ -58,8 +58,12 @@
                     </section>
                 </div>
 
-                <ul class="music-list">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search songs">
+                    <button onclick="searchSongs()">Search</button>
+                </div>
 
+                <ul class="music-list">
 
                     <li th:each="song : ${songs}">
                         <img th:src="${song.image}" height="25" width="30%">
@@ -1747,6 +1751,28 @@
     }
 </style>
 <script>
+
+    function searchSongs() {
+        // Получите введенный пользователем текст поиска
+        var searchQuery = document.getElementById("searchInput").value.toLowerCase();
+
+        // Получите список элементов песен
+        var songList = document.querySelectorAll(".music-list li");
+
+        // Переберите каждую песню и проверьте, содержит ли она текст поиска
+        songList.forEach(function(song) {
+            var title = song.querySelector("p:nth-of-type(1)").textContent.toLowerCase();
+            var artist = song.querySelector("p:nth-of-type(2)").textContent.toLowerCase();
+
+            // Скрыть или отобразить песню в зависимости от результата поиска
+            if (title.includes(searchQuery) || artist.includes(searchQuery)) {
+                song.style.display = "flex"; // Отобразить песню
+            } else {
+                song.style.display = "none"; // Скрыть песню
+            }
+        });
+    }
+
     function decodeBase64ToUrl(base64String) {
         const decodedString = atob(base64String);
         const url = URL.createObjectURL(new Blob([decodedString]));
