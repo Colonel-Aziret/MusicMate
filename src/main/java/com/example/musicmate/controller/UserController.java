@@ -9,11 +9,13 @@ import com.example.musicmate.service.EmailSenderService;
 import com.example.musicmate.service.TokenService;
 import com.example.musicmate.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.mail.MessagingException;
 
@@ -24,7 +26,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
 
     @Autowired
     private TokenService tokenService;
@@ -58,28 +59,68 @@ public class UserController {
         return "login";
     }
 
+
+//    @GetMapping("/login")
+//    public String showLoginForm(Model model) {
+//        model.addAttribute("user", new User());
+//        return "login";
+//    }
+
+//    @PostMapping("/login")
+//    public String login(@ModelAttribute("user") User user, Model model) {
+//        User authenticatedUser = userService.authenticateUser(user.getEmail(), user.getPassword());
+//
+//        if (authenticatedUser != null) {
+//            return "redirect:/"; // Перенаправление на главную страницу при успешной аутентификации
+//        } else {
+//            model.addAttribute("error", "Неправильный логин или пароль"); // Вывод ошибки через Thymeleaf
+//            return "login";
+//        }
+//    }
+
+
     @GetMapping("/login")
     public String showLoginForm(Model model) {
-        model.addAttribute("user",new User());
-
+        model.addAttribute("user", new User());
         return "login";
     }
+
 
     @PostMapping("/login")
     public String loginUser(
             @RequestParam String email,
             @RequestParam String password,
-            Model model
+             RedirectAttributes redirectAttributes
     ) {
         User user = userService.authenticateUser(email, password);
 
-        if (user != null) {
-            model.addAttribute("message", "Авторизация успешна");
-        } else {
-            model.addAttribute("error", "Неверный email или пароль");
+        if (user == null) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Неверный email или пароль");
+            return "redirect:/login";
         }
         return "redirect:/";
     }
+
+
+
+
+//    @PostMapping("/login")
+//    public String loginUser(
+//            @RequestParam String email,
+//            @RequestParam String password,
+//            Model model
+//    ) {
+//        User user = userService.authenticateUser(email, password);
+//
+//        if (user != null) {
+//            model.addAttribute("message", "Авторизация успешна");
+//
+//        } else {
+//            model.addAttribute("error", "Неверный email или пароль");
+//            return "redirect:/login";
+//        }
+//        return "redirect:/";
+//    }
 
     @GetMapping(value = "/reset-password")
     public String resetPasswordPage() {
@@ -107,7 +148,7 @@ public class UserController {
                 user.setPassword(passwordEncoder.encode(newPasswordUser.getPassword()));
                 userService.update(user);
                 tokenService.deleteToken(byUserAndToken);
-                return "login";
+                return "redirect:/login";
             } else {
                 return "change-password";
             }
