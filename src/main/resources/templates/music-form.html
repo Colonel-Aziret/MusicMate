@@ -3,15 +3,19 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 <head>
+    <meta charset="UTF-8">
     <title>Add Music</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #4C5760;
+            color: #fff;
         }
 
         h2 {
-            color: #333;
+            color: #fff;
         }
 
         label {
@@ -20,18 +24,63 @@
         }
 
         input[type="text"], input[type="number"], input[type="file"] {
-            width: 300px;
-            padding: 5px;
-            margin-top: 5px;
+            width: 95%;
+        padding: 12px;
+        background-color: #4C5760;
+        border: none;
+        border-radius: 4px;
+        border-color: #DBFE87;
+        color: #fff;
         }
 
         input[type="submit"] {
-            background-color: #4CAF50;
-            color: #fff;
+            background-color: #DBFE87;
+            color: #384147;
             padding: 10px 15px;
             border: none;
             cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 30px;
+            border-radius: 30px;
+            width: 100%;
         }
+
+        input[type="submit"]:hover {
+            background-color: #ABD3F4;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #form-wrapper {
+            background-color: #384147;
+            border-radius: 8px;
+            padding: 40px;
+            width: 400px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    input::placeholder {
+        color: #fff;
+    }
+
     </style>
 </head>
 <body>
@@ -56,19 +105,11 @@
         <!-- Media Sub Menu -->
 
         <a href="" title="Graph &amp; Charts"><i class="fas fa-chart-bar"></i><span> Graph &amp; Charts</span></a>
-        <a href="" title="Events"><i class="far fa-calendar-alt"></i><span> Events</span></a>
 
-        <a href="" class="submenu" name="other-sub" title="Other Contents"><i class="fas fa-book"></i><span> Other Contents</span></a>
-        <!-- Other Contents Sub Menu -->
-        <div id="other-sub" style="display: none;">
-            <a href="" title="Forms"><i class="fas fa-list"></i><span> Forms</span></a>
-            <a href="" title="Mail Lists"><i class="fas fa-list-ul"></i><span> Mail Lists</span></a>
-            <a href="" title="Maps"><i class="fas fa-map-marker-alt"></i><span> Maps</span></a>
-        </div>
+
         <!-- Other Contents Sub Menu -->
         <a href="" title="Admin Tools"><i class="fas fa-cogs"></i><span> Admin Tools</span></a>
     </div>
-
     <!--Menu-->
 
 
@@ -79,29 +120,37 @@
         <div id="form-wrapper">
             <!-- Ваша форма здесь -->
             <form th:action="@{/music}" th:object="${song}" method="post" enctype="multipart/form-data">
-                <label>Title:</label>
-                <input type="text" th:field="*{title}" required>
+                <div class="form-group">
+                    <label>Название песни:</label>
+                    <input type="text" th:field="*{title}" required>
+                </div>
 
-                <label>Artist:</label>
-                <input type="text" th:field="*{artist}" required>
+                <div class="form-group">
+                    <label>Исполнитель:</label>
+                    <input type="text" th:field="*{artist}" required></div>
 
-                <label>Album:</label>
-                <input type="text" th:field="*{album}" required>
+                    <div class="form-group">
+                        <label>Альбом:</label>
+                        <input type="text" th:field="*{album}" required></div>
 
-                <label>Image:</label>
-                <input type="text" th:field="*{image}" required>
+                    <div class="form-group">
+                        <label>Обои:</label>
+                        <input type="text" th:field="*{image}" required></div>
 
-                <label>Genre:</label>
-                <input type="text" th:field="*{genre}" required>
+                    <div class="form-group">
+                        <label>Жанр:</label>
+                        <input type="text" th:field="*{genre}" required></div>
 
-                <label>Audio:</label>
-                <input type="file" name="file" required>
+                    <div class="form-group">
+                        <label>Аудио:</label>
+                        <input type="file" name="file" required></div>
 
-                <label>Year:</label>
-                <input type="number" th:field="*{year}" required>
+                    <div class="form-group">
+                        <label>Год выпуска:</label>
+                        <input type="number" th:field="*{year}" required></div>
 
-                <br>
-                <input type="submit" value="Add">
+                    <br>
+                    <input type="submit" value="Добавить">
             </form>
         </div>
     </div>
@@ -110,88 +159,8 @@
 </body>
 </html>
 <style>
-    #form-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 55vh;
-    }
 
-    h2 {
-        color: #333;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-
-    .form-container {
-        margin-top: 30px;
-
-        margin-left: 572px;
-        margin-right: 500px;
-    }
-
-    .form-container {
-        opacity: 0;
-        transform: translateY(-20px);
-        animation: fade-in 0.5s forwards;
-    }
-
-    @keyframes fade-in {
-        0% {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-
-    /* Измените цвет фона контейнера и добавьте тень */
-    .form-container {
-        background-color: #ffffff;
-        box-shadow: 0 2px 60px rgba(17, 16, 16, 0.1);
-    }
-
-    /* Измените цвета полей ввода и меток */
-    input[type="text"],
-    input[type="number"],
-    input[type="file"] {
-        background-color: #f5f5f5;
-        border: 1px solid #ddd;
-        color: #333;
-    }
-
-    label {
-        color: #777;
-    }
-
-    /* Добавьте плавный переход при наведении на поля ввода и кнопку */
-    input[type="text"]:hover,
-    input[type="number"]:hover,
-    input[type="file"]:hover,
-    input[type="submit"]:hover {
-        background-color: #eaeaea;
-    }
-
-    /* Измените цвет текста на кнопке при наведении */
-    input[type="submit"]:hover {
-        color: #fff;
-    }
-
-
-    .form-container label,
-    .form-container input[type="file"] {
-        margin-top: 10px;
-    }
-
-    .form-container input[type="submit"] {
-        margin-top: 20px;
-    }
-
-    @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
     /* body	*/
     html, body {
@@ -1656,7 +1625,6 @@
     .icon-folder-open-alt:before {
         content: "\f115"
     }
-
     .music-list li img {
         width: 50px; /* Adjust the width as needed */
         height: 50px; /* Adjust the height as needed */
@@ -1706,37 +1674,29 @@
             align-items: center;
             flex: 0 0 240px;
         }
-
         .music-head img {
             width: 150px;
         }
-
         .catty-music > div > p:not(:first-of-type) {
             display: none;
         }
-
         .catty-music {
-            padding-left: 0 !important;
+            padding-left: 0!important;
             margin-top: 20px;
         }
-
         .catty-music div:nth-of-type(2) .fa {
             flex: 0 0 33%;
             text-align: center;
         }
-
         .catty-music div {
             display: flex;
         }
-
         .catty-music div:nth-of-type(2) i.fa:nth-of-type(2) {
-            padding: 0 !important;
+            padding: 0!important;
         }
-
         .music-list li p:nth-of-type(2), .music-list li p:nth-of-type(4) {
-            display: none !important;
+            display: none!important;
         }
-
         .music-list li {
             display: flex;
             padding: 10px 20px; /* Adjust the padding as needed */
@@ -1798,7 +1758,7 @@
         font-size: 1.8em;
     }
 
-    .catty-music div:nth-of-type(1) p:not(:first-of-type) {
+    .catty-music div:nth-of-type(1) p:not(:first-of-type){
         font-size: 0.9em;
         margin: 2px 0;
     }
@@ -1835,23 +1795,19 @@
         margin-right: 10px;
     }
 
-    @media (max-width: 1199px) {
+    @media (max-width:1199px) {
         .footer-right i:nth-of-type(4), .footer-right i:last-of-type {
             display: none;
         }
-
         .footer-right i:nth-of-type(3) {
             margin-right: 10px;
         }
-
         .footer-right {
             justify-content: space-around;
         }
-
         .footer-left img {
             display: none;
         }
-
         footer {
             display: flex;
             flex: 120px;
@@ -1870,220 +1826,4 @@
         margin-top: 10px;
     }
 
-    <
-    style >
-
-    @import url(https://fonts.googleapis.com/css?family=Open+Sans);
-
-    /* body	*/
-    html, body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        font-family: "Open Sans", Helvetica, sans-serif;
-        background-color: #404040;
-    }
-
-    /* body	*/
-
-
-    #responsive-admin-menu {
-        float: left;
-        width: 200px;
-        background-color: #404040;
-        height: 100%;
-        position: relative;
-        overflow: hidden;
-        left: 0px;
-        min-height: 500px;
-
-    }
-
-    #content-wrapper {
-        width: auto;
-        margin-left: 200px;
-        background-color: #ffffff;
-        height: 1200px;
-        padding: 15px;
-    }
-
-    #responsive-admin-menu #responsive-menu {
-        height: 50px;
-        display: none;
-        line-height: 50px;
-        cursor: pointer;
-        color: #ffffff;
-        text-indent: 10px;
-    }
-
-
-    #responsive-admin-menu #responsive-menu .menuicon {
-        color: #ffffff;
-        font-size: 24px;
-        position: absolute;
-        right: 10px;
-        top: 0px;
-    }
-
-    #responsive-admin-menu #logo {
-        background-position: -0px -36px;
-        width: 174px;
-        height: 40px;
-        margin: 10px;
-        background: url('https://assets.codepen.io/assets/footer/codepen-logo-midgray.svg') no-repeat;
-        -webkit-background-size: 146.66667px 25.83333px;
-        background-size: 146.66667px 25.83333px;
-    }
-
-    /* Menu Styles */
-    #responsive-admin-menu #menu {
-        width: 100%;
-    }
-
-    #responsive-admin-menu #menu a {
-        border-bottom: 1px dotted #52535a;
-        font-size: 14px;
-        text-decoration: none;
-        display: block;
-        padding: 12px;
-        color: #FFFFFF;
-        position: relative;
-        font-weight: 400;
-        overflow: hidden;
-    }
-
-    #responsive-admin-menu #menu a:hover {
-        color: #52535a;
-        background-color: #fcfcfc;
-    }
-
-    #responsive-admin-menu #menu i {
-        width: 16px;
-        padding-right: 4px;
-    }
-
-    #responsive-admin-menu #menu div {
-        display: none;
-        width: 100%;
-        background-color: #5c5d64;
-        overflow: hidden;
-    }
-
-    #responsive-admin-menu #menu div a {
-        color: #c0c0c0;
-    }
-
-    #responsive-admin-menu #menu div a:hover {
-        color: #888888;
-    }
-
-    #responsive-admin-menu #menu a.submenu:before {
-        font-family: FontAwesome;
-        content: "\f054";
-    }
-
-    #responsive-admin-menu #menu a.downarrow:before {
-        font-family: FontAwesome;
-        content: "\f078";
-    }
-
-    #responsive-admin-menu #menu a.submenu:before {
-        font-size: 14px;
-        position: absolute;
-        right: 15px;
-        top: 17px;
-    }
-
-    /* Menu Styles */
-
-    @media screen and (max-width: 960px) {
-        #responsive-admin-menu #responsive-menu {
-            display: none;
-        }
-
-        #responsive-admin-menu #menu a span {
-            display: inline-block;
-        }
-    }
-
-    @media screen and (max-width: 800px) {
-        #responsive-admin-menu #menu a span {
-            display: none;
-        }
-
-        #responsive-admin-menu {
-            float: left;
-            width: 40px;
-            position: relative;
-        }
-
-        #responsive-admin-menu {
-            height: 100%;
-        }
-
-        #content-wrapper {
-            margin-left: 40px;
-        }
-
-        #responsive-admin-menu #menu a.submenu:before {
-            font-size: 6px;
-            right: 5px;
-        }
-
-        #responsive-admin-menu #logo {
-            background: url('../images/logo.png');
-            background-position: -0px -0px;
-            width: 29px;
-            height: 26px;
-            margin: 10px 10px 10px 5px;
-        }
-    }
-
-    @media screen and (max-width: 480px) {
-        #responsive-admin-menu {
-            min-height: 50px;
-            float: left;
-            width: 100%;
-            background-color: #404040;
-            height: auto;
-            position: static;
-            top: 0;
-        }
-
-        #responsive-admin-menu #logo {
-            display: none;
-        }
-
-        #responsive-admin-menu #menu a span {
-            display: inline-block;
-        }
-
-        #content-wrapper {
-            margin-left: 0;
-            padding-top: 60px;
-        }
-
-        #responsive-admin-menu #responsive-menu {
-            display: block;
-        }
-
-        #responsive-admin-menu #menu {
-            display: none;
-        }
-
-        #responsive-admin-menu #menu a {
-            color: #FFFFFF;
-        }
-
-        #responsive-admin-menu #menu a.submenu:before {
-            font-size: 14px;
-            right: 15px;
-        }
-    }
-
-
-    .footer-text p {
-        margin-bottom: 10px;
-        margin-top: 10px;
-    }
 </style>

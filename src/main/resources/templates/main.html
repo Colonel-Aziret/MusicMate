@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      xmlns:th="http://www.w3.org/1999/xhtml">
 <div id="responsive-admin-menu">
     <div id="responsive-menu">
         <div class="menuicon">≡</div>
@@ -20,15 +21,8 @@
         <!-- Media Sub Menu -->
 
         <a href="" title="Graph &amp; Charts"><i class="fas fa-chart-bar"></i><span> Graph &amp; Charts</span></a>
-        <a href="" title="Events"><i class="far fa-calendar-alt"></i><span> Events</span></a>
 
-        <a href="" class="submenu" name="other-sub" title="Other Contents"><i class="fas fa-book"></i><span> Other Contents</span></a>
-        <!-- Other Contents Sub Menu -->
-        <div id="other-sub" style="display: none;">
-            <a href="" title="Forms"><i class="fas fa-list"></i><span> Forms</span></a>
-            <a href="" title="Mail Lists"><i class="fas fa-list-ul"></i><span> Mail Lists</span></a>
-            <a href="" title="Maps"><i class="fas fa-map-marker-alt"></i><span> Maps</span></a>
-        </div>
+
         <!-- Other Contents Sub Menu -->
         <a href="" title="Admin Tools"><i class="fas fa-cogs"></i><span> Admin Tools</span></a>
     </div>
@@ -36,11 +30,17 @@
 
 
 </div>
-
 <div id="content-wrapper">
 
     <div class="flex-container">
         <div class="main">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search songs">
+                <button type="submit" class="searchButton" onclick="searchSongs()">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
             <div class="content">
                 <div class="music-head">
                     <img src="https://i.imgur.com/xDSTaej.jpg" />
@@ -56,11 +56,6 @@
                             <i class="fa fa-ellipsis-h"> &nbsp;More</i>
                         </div>
                     </section>
-                </div>
-
-                <div class="search-bar">
-                    <input type="text" id="searchInput" placeholder="Search songs">
-                    <button onclick="searchSongs()">Search</button>
                 </div>
 
                 <ul class="music-list">
@@ -86,6 +81,25 @@
 <style>
     @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
+.search-bar{
+      width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+
     /* body	*/
     html, body {
         margin: 0;
@@ -109,6 +123,7 @@
         min-height: 500px;
 
     }
+
 
     #content-wrapper {
         width: auto;
@@ -1565,6 +1580,19 @@
 
     .main {
         display: flex;
+        padding-left: 20px;
+        width: 80%;
+        position: relative;
+    }
+
+    input[type="text"]{
+        width: 100%;
+        padding: 10px;
+        background-color: #fff;
+        border: none;
+        border-radius: 4px;
+        border-color: #DBFE87;
+        color: #4C5760;
     }
 
     .content {
@@ -1585,10 +1613,10 @@
     }
 
     .music-head {
-        color: white;
-        background: #4e4e4e;
+        color: black;
+<!--        background: #4e4e4e;-->
         flex: 0 0 280px;
-        padding: 40px;
+        padding: 20px;
         display: flex;
     }
 
@@ -1599,7 +1627,7 @@
             flex: 0 0 240px;
         }
         .music-head img {
-            width: 150px;
+            width: 100px;
         }
         .catty-music > div > p:not(:first-of-type) {
             display: none;
@@ -1630,13 +1658,14 @@
 
         .music-list li p {
             flex: 0 1 auto;
+            margin-left: 50px;
         }
     }
 
     .music-list {
         flex: 1 0 auto;
         list-style-type: none;
-        padding: 5px 10px 0px;
+        padding: 5px 10px 0px 10px;
         color: black;
         margin-left: -20px; /* Adjust the margin as needed */
     }

@@ -3,83 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <title>Регистрация</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #4C5760;
+        }
 
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .frame {
+            background-color: #384147;
+            border-radius: 8px;
+            padding: 100px;
+            width: 400px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            height: 60%;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            background-color: #4C5760;
+            border: none;
+            border-radius: 4px;
+            border-color: #DBFE87;
+            color: #fff;
+        }
+
+        input::placeholder {
+            color: #fff;
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            background-color: #DBFE87;
+            color: #384147;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 30px;
+        }
+
+        button:hover {
+            background-color: #ABD3F4;
+        }
+    </style>
 </head>
-<style>
-    .container {
-        max-width: 400px;
-        margin: 0 auto;
-        padding: 20px;
-        text-align: center;
-    }
-
-    h1 {
-        margin-bottom: 20px;
-    }
-
-    .form-group {
-        margin-bottom: 15px;
-        text-align: left;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 5px;
-    }
-
-    input, select {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-
-    button {
-        width: 100%;
-        padding: 10px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: #45a049;
-    }
-
-</style>
 <body>
 <div class="container">
-    <h1>Регистрация</h1>
-    <form action="#" th:action="@{/register}" th:object="${user}" method="post">
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" th:field="*{email}" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Пароль:</label>
-            <input type="password" id="password" th:field="*{password}" required>
-        </div>
-        <div class="form-group">
-            <label for="name">Имя:</label>
-            <input type="text" id="name" th:field="*{name}" required>
-        </div>
-        <div class="form-group">
-            <label for="gender">Пол:</label>
-            <select id="gender" th:field="*{gender}" required>
-                <option value="">Выберите пол</option>
-                <option value="Мужской">Мужской</option>
-                <option value="Женский">Женский</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="age">Возраст:</label>
-            <input type="number" id="age" th:field="*{age}" required>
-        </div>
-        <button type="submit">Зарегистрироваться</button>
-    </form>
+    <div class="frame">
+        <h1>Регистрация</h1>
+        <form action="#" th:action="@{/register}" th:object="${user}" method="post">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" th:field="*{email}" required placeholder="Введите ваш email">
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" th:field="*{password}" required placeholder="Введите ваш пароль">
+            </div>
+            <div class="form-group">
+                <label for="name">Имя:</label>
+                <input type="text" id="name" th:field="*{name}" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Пол:</label>
+                <select id="gender" th:field="*{gender}" required>
+                    <option value="">Выберите пол</option>
+                    <option value="Мужской">Мужской</option>
+                    <option value="Женский">Женский</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="age">Возраст:</label>
+                <input type="number" id="age" th:field="*{age}" required>
+            </div>
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+    </div>
 </div>
 </body>
 </html>

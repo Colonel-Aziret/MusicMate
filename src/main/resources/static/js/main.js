@@ -24,7 +24,7 @@ noUiSlider.create(slider, {
 // Tooltips
 
 $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="tooltip"]').tooltip()мы
 })
 
 // Viewport Heights

@@ -19,8 +19,10 @@ public class Song {
     private String title;
     private String artist;
     private String album;
+    @Column(columnDefinition = "TEXT")
     private String image;
     private String genre;
+    @Column(columnDefinition = "TEXT")
     private String audio;
     private int year;
 
